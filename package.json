@@ -1,7 +1,12 @@
 {
   "name": "sainsbury-fetch",
   "version": "0.1.0",
-  "private": true,
+  "engine": {
+    "node": "10.14.2",
+    "npm": "6.5.0"
+  },
+  "license": "MIT",
+  "private": false,
   "dependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
