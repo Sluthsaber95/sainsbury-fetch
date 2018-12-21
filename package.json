@@ -13,15 +13,20 @@
     "react-scripts": "2.1.1"
   },
   "devDependencies": {
+    "flow-bin": "^0.89.0",
     "onchange": "^5.2.0",
     "prettier": "1.15.3"
   },
   "scripts": {
-    "start": "yarn run prettier:watch & react-scripts start",
+    "start": "yarn run lint & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier:watch": "onchange '**/*.js' -- prettier --write {{changed}} --config ./config/prettierrc.yaml"
+    "lint": "yarn run prettier:watch & yarn run flow:start",
+    "prettier:watch": "onchange '**/*.js' -- prettier --write {{changed}} --config ./config/prettierrc.yaml",
+    "flow:start": "flow start",
+    "flow:status": "flow status",
+    "flow:stop": "flow stop"
   },
   "eslintConfig": {
     "extends": "react-app"
