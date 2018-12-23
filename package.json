@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "engine": {
     "node": "10.14.2",
-    "npm": "6.5.0"
+    "npm": "6.5.0",
+    "yarn": "1.10.1"
   },
   "license": "MIT",
   "private": false,
