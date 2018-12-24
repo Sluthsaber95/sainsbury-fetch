@@ -21,9 +21,7 @@
     "prettier": "1.15.3"
   },
   "scripts": {
-    "start": "yarn run lint & react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "farch": "farch -R",
     "flow:start": "flow start --flowconfig-name ./config/.flowconfig",
@@ -38,7 +36,9 @@
     "src/*.jpeg": "^(logo|icon)-\\w{1,}\\.jpeg$",
     "src/*.jpg": "^(logo|icon)-\\w{1,}\\.jpg$",
     "src/*.js": "^[a-z][a-zA-Z]{0,}.js$",
-    "src/*.jsx": "^[A-Z]{0,}[a-zA-Z]{0,}.jsx$",
+    "src/components/*.jsx": "^[A-Z]{0,}[a-zA-Z]{0,}.jsx$",
+    "src/containers/*.jsx": "^Container[A-Z][a-zA-Z]{0,}.jsx",
+    "src/screens/*.jsx": "^Screen[A-Z][a-zA-Z]{0,}.jsx",
     "src/*.png": "^(logo|image|icon)-\\w{1,}\\.png$",
     "src/*.svg": "^(logo|image|icon)-\\w{1,}\\.svg$"
   },
