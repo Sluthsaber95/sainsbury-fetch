@@ -26,7 +26,7 @@
     "eject": "react-scripts eject",
     "lint": "yarn run prettier:watch & yarn run flow:start",
     "prettier:watch": "onchange '**/*.js' -- prettier --write {{changed}} --config ./config/prettierrc.yaml",
-    "flow:start": "flow start",
+    "prettier:write": "prettier --write \"src/**/*.js\"",
     "flow:status": "flow status",
     "flow:stop": "flow stop"
   },
