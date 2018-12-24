@@ -49,7 +49,7 @@
   "lint-staged": {},
   "husky": {
     "hooks": {
-      "pre-commit": "export CI=true && lint-staged -c ./.lintstagedrc && yarn test"
+      "pre-commit": "export CI=true && lint-staged -c ./config/lintstagedrc.yml && yarn test"
     }
   },
   "eslintConfig": {
