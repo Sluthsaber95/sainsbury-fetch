@@ -37,7 +37,7 @@
   "farch": {
     "src/*.jpeg": "^(logo|icon)-\\w{1,}\\.jpeg$",
     "src/*.jpg": "^(logo|icon)-\\w{1,}\\.jpg$",
-    "src/*.js": "^[a-z][a-zA-Z]{0,}.js$",
+    "src/*.js": "^(([a-z][a-zA-Z]{0,})|([a-zA-Z]{0,}.test)).js$",
     "src/components/*.jsx": "^[A-Z]{0,}[a-zA-Z]{0,}.jsx$",
     "src/containers/*.jsx": "^Container[A-Z][a-zA-Z]{0,}.jsx",
     "src/screens/*.jsx": "^Screen[A-Z][a-zA-Z]{0,}.jsx",
