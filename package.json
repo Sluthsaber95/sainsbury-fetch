@@ -31,8 +31,9 @@
     "lint": "yarn run prettier:watch & yarn run flow:start",
     "prettier:watch": "onchange '**/*.js' -- prettier --write {{changed}} --config ./config/prettierrc.yaml",
     "prettier:write": "prettier --write \"src/**/*.js\"",
-    "flow:status": "flow status",
-    "flow:stop": "flow stop"
+    "start": "yarn run lint & react-scripts start",
+    "test": "react-scripts test"
+  },
   "farch": {
     "src/*.jpeg": "^(logo|icon)-\\w{1,}\\.jpeg$",
     "src/*.jpg": "^(logo|icon)-\\w{1,}\\.jpg$",
@@ -44,6 +45,11 @@
     "src/*.svg": "^(logo|image|icon)-\\w{1,}\\.svg$"
   },
   "lint-staged": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "export CI=true && lint-staged -c ./.lintstagedrc && yarn test"
+    }
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
