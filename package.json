@@ -35,6 +35,8 @@
     "test": "react-scripts test"
   },
   "farch": {
+    "src/*.css": "^([a-zA-Z]{0,}).css$",
+    "src/*.sass": "^([A-Z][a-zA-Z]{0,}).sass$",
     "src/*.jpeg": "^(logo|icon)-\\w{1,}\\.jpeg$",
     "src/*.jpg": "^(logo|icon)-\\w{1,}\\.jpg$",
     "src/*.js": "^(([a-z][a-zA-Z]{0,})|([a-zA-Z]{0,}.test)).js$",
