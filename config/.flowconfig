@@ -1,0 +1,11 @@
+[ignore]
+  ./node_modules/
+  ./*.test.js
+[include]
+  ./src/
+[lints]
+all=error
+[options]
+emoji=true
+esproposal.export_star_as=enable
+[strict]
