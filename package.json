@@ -16,6 +16,7 @@
   "devDependencies": {
     "flow-bin": "^0.89.0",
     "husky": "^1.2.1",
+    "linter-farch": "^1.3.0",
     "onchange": "^5.2.0",
     "prettier": "1.15.3"
   },
@@ -24,6 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "farch": "farch -R",
     "flow:start": "flow start --flowconfig-name ./config/.flowconfig",
     "flow:status": "flow status --flowconfig-name ./config/.flowconfig",
     "flow:stop": "flow stop --flowconfig-name ./config/.flowconfig",
@@ -32,6 +34,13 @@
     "prettier:write": "prettier --write \"src/**/*.js\"",
     "flow:status": "flow status",
     "flow:stop": "flow stop"
+  "farch": {
+    "src/*.jpeg": "^(logo|icon)-\\w{1,}\\.jpeg$",
+    "src/*.jpg": "^(logo|icon)-\\w{1,}\\.jpg$",
+    "src/*.js": "^[a-z][a-zA-Z]{0,}.js$",
+    "src/*.jsx": "^[A-Z]{0,}[a-zA-Z]{0,}.jsx$",
+    "src/*.png": "^(logo|image|icon)-\\w{1,}\\.png$",
+    "src/*.svg": "^(logo|image|icon)-\\w{1,}\\.svg$"
   },
   "eslintConfig": {
     "extends": "react-app"
