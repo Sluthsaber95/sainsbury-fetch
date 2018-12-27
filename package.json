@@ -40,7 +40,7 @@
     "lint": "yarn run prettier:watch & yarn run flow:status",
     "prettier:watch": "onchange '**/*.{js,jsx}' -- prettier --write {{changed}} --config ./config/prettierrc.yaml",
     "prettier:write": "prettier --write \"src/**/*.{js,jsx}\"",
-    "start": "yarn run lint & react-scripts start",
+    "start": "react-scripts start",
     "test": "react-scripts test",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
