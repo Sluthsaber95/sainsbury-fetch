@@ -38,7 +38,7 @@
     "flow:start": "flow start --flowconfig-name ./config/flowconfig.yml",
     "flow:status": "flow status --flowconfig-name ./config/flowconfig.yml && yarn run flow:stop",
     "flow:stop": "flow stop --flowconfig-name ./config/flowconfig.yml",
-    "lint": "yarn run prettier:watch & yarn run flow:start",
+    "lint": "yarn run flow:start & yarn run prettier:watch",
     "prettier:watch": "onchange '**/*.{js,jsx}' -- prettier --write {{changed}} --config ./config/prettierrc.yaml",
     "prettier:write": "prettier --write \"src/**/*.{js,jsx}\"",
     "start": "react-scripts start",
