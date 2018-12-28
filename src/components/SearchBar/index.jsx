@@ -1,13 +1,13 @@
 // @flow
-import React from "react";
-import { DebounceInput } from "react-debounce-input";
+import React from 'react'
+import { DebounceInput } from 'react-debounce-input'
 
-import "./SearchBar.scss";
+import './SearchBar.scss'
 
 type Props = {
   value: string,
-  callback: (event: SyntheticInputEvent<HTMLInputElement>) => void
-};
+  callback: (event: SyntheticInputEvent<HTMLInputElement>) => void,
+}
 
 export default function SearchBar(props: Props) {
   return (
@@ -20,5 +20,5 @@ export default function SearchBar(props: Props) {
       value={props.value}
       type="text"
     />
-  );
+  )
 }
