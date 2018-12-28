@@ -11,7 +11,7 @@ it('renders without crashing', () => {
 it('does not pass props to input when character length is 2 or less', () => {
   const mockFn = jest.fn()
   const shallowWrapper = shallow(<SearchBar callback={mockFn} />)
-  const valuePassed = 'App'
+  const valuePassed = 'Ap'
 
   shallowWrapper.simulate('change', { target: { value: valuePassed } })
   expect(mockFn).toHaveBeenCalled()
