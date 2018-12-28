@@ -44,7 +44,7 @@
     "flow:stop": "flow stop --flowconfig-name ./config/flowconfig.yml",
     "lint": "yarn run flow:start & yarn run prettier:watch",
     "prettier:watch": "onchange '**/*.{js,jsx}' -- prettier --write {{changed}} --config ./config/prettierrc.yaml",
-    "prettier:write": "prettier --write \"src/**/*.{js,jsx}\"",
+    "prettier:write": "prettier --write \"src/**/*.{js,jsx}\" --config ./config/prettierrc.yaml",
     "start": "react-scripts start",
     "test": "react-scripts test",
     "storybook": "start-storybook -p 9009 -s public",
