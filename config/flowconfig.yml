@@ -4,7 +4,8 @@
 [include]
   ./src/
 [lints]
-all=error
+all=warn
+untyped-type-import=off
 [options]
 emoji=true
 esproposal.export_star_as=enable
