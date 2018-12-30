@@ -15,7 +15,7 @@ export default function SearchBar(props: Props) {
       className="search-bar"
       minLength={1}
       debounceTimeout={1000}
-      placeholder="Apollo 11, Mars, ISS ..."
+      placeholder="Search"
       onChange={event => props.callback(event)}
       value={props.value}
       type="text"
