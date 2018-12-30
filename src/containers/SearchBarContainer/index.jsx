@@ -4,10 +4,12 @@ import axios from 'axios'
 
 import SearchBar from '../../components/SearchBar'
 
-type Props = {}
+type Props = {
+  collectData: Function,
+}
+
 type State = {
   value: string,
-  searchResults?: Object,
 }
 
 export default class SearchBarContainer extends Component<Props, State> {
@@ -15,7 +17,6 @@ export default class SearchBarContainer extends Component<Props, State> {
     super()
     this.state = {
       value: '',
-      searchResults: {},
     }
   }
   getSearchResults = (media_type: 'image' | 'audio') => {
@@ -28,9 +29,8 @@ export default class SearchBarContainer extends Component<Props, State> {
       })
       .then(response => {
         if (response.status >= 200 && response.status < 400) {
-          console.log(response.data.collection.items.filter((_, i) => i < 10))
           const responseItemList = response.data.collection.items
-          return responseItemList.filter((_, i) => i < 10)
+          this.props.collectData(responseItemList.filter((_, i) => i < 10))
         }
         return
       })
