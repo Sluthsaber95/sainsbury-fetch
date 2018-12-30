@@ -13,9 +13,9 @@ export default function SearchBar(props: Props) {
   return (
     <DebounceInput
       className="search-bar"
-      minLength={3}
+      minLength={1}
       debounceTimeout={1000}
-      placeholder="apollo 11, mars, ISS ..."
+      placeholder="Apollo 11, Mars, ISS ..."
       onChange={event => props.callback(event)}
       value={props.value}
       type="text"

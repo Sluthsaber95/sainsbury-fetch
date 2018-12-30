@@ -29,7 +29,7 @@ it('passes props to input when character length is 3 or more', () => {
   expect(shallowWrapper.props().value).toBe(valuePassed)
 })
 
-const placeholder = 'apollo 11, mars, ISS ...'
+const placeholder = 'Apollo 11, Mars, ISS ...'
 it(`contains correct placeholder to "${placeholder}"`, () => {
   const shallowWrapper = shallow(<SearchBar />)
   expect(shallowWrapper.props().placeholder).toBe(placeholder)
