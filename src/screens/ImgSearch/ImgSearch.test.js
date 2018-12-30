@@ -16,7 +16,7 @@ describe('Child Components', () => {
   childComponents.map(comp => {
     it(`contains component ${comp}`, () => {
       const shallowWrapper = shallow(<ImgSearch />)
-      expect(shallowWrapper.find('SearchBarContainer').exists()).toBe(true)
+      expect(shallowWrapper.find(`${comp}`).exists()).toBe(true)
     })
   })
 })
