@@ -1,4 +1,4 @@
-describe('/search - As a user...', function() {
+describe('/search - As a user...', () => {
   context('I see', () => {
     it('An empty search field', () => {})
     it('Within the search box - text "Search"', () => {})
