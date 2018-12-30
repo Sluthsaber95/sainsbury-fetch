@@ -9,7 +9,10 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "axios": "^0.18.0",
+    "node-sass": "^4.11.0",
     "react": "^16.7.0",
+    "react-debounce-input": "^3.2.0",
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.1"
   },
@@ -37,11 +40,12 @@
     "farch": "farch -R",
     "flow:start": "flow start --flowconfig-name ./config/flowconfig.yml",
     "flow:status": "flow status --flowconfig-name ./config/flowconfig.yml",
+    "flow:quick-check": "yarn run flow:status && yarn run flow:stop",
     "flow:stop": "flow stop --flowconfig-name ./config/flowconfig.yml",
-    "lint": "yarn run prettier:watch & yarn run flow:start",
-    "prettier:watch": "onchange '**/*.js' -- prettier --write {{changed}} --config ./config/prettierrc.yaml",
-    "prettier:write": "prettier --write \"src/**/*.js\"",
-    "start": "yarn run lint & react-scripts start",
+    "lint": "yarn run flow:start & yarn run prettier:watch",
+    "prettier:watch": "onchange '**/*.{js,jsx}' -- prettier --write {{changed}} --config ./config/prettierrc.yaml",
+    "prettier:write": "prettier --write \"src/**/*.{js,jsx}\" --config ./config/prettierrc.yaml",
+    "start": "react-scripts start",
     "test": "react-scripts test",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
@@ -53,8 +57,8 @@
     "src/*.jpg": "^(logo|icon)-\\w{1,}\\.jpg$",
     "src/*.js": "^(([a-z][a-zA-Z]{0,})|([a-zA-Z]{0,}.test)).js$",
     "src/components/*.jsx": "^[A-Z]{0,}[a-zA-Z]{0,}.jsx$",
-    "src/containers/*.jsx": "^Container[A-Z][a-zA-Z]{0,}.jsx",
-    "src/screens/*.jsx": "^Screen[A-Z][a-zA-Z]{0,}.jsx",
+    "src/containers/*.jsx": "^[A-Z][a-zA-Z]{0,}Container.jsx",
+    "src/screens/*.jsx": "^[A-Z][a-zA-Z]{0,}.jsx",
     "src/*.png": "^(logo|image|icon)-\\w{1,}\\.png$",
     "src/*.svg": "^(logo|image|icon)-\\w{1,}\\.svg$"
   },

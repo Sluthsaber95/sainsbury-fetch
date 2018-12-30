@@ -1,6 +1,11 @@
 // @flow
-import React from "react";
+import React from 'react'
+import ScreenImgSearch from './screens/ImgSearch'
 
-const App = () => <section />;
+const App = () => (
+  <section>
+    <ScreenImgSearch />
+  </section>
+)
 
-export default App;
+export default App
