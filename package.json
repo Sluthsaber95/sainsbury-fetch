@@ -48,7 +48,8 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "cypress:dev": "./node_modules/.bin/cypress open --env configFile=dev"
   },
   "farch": {
     "src/*.css": "^([a-zA-Z]{0,}).css$",
