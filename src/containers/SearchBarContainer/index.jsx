@@ -42,6 +42,10 @@ export default class SearchBarContainer extends Component<Props, State> {
     this.setState({ value: event.target.value })
     this.getSearchResults('image')
   }
+  componentDidMount() {
+    this.setState({ value: '' })
+    this.getSearchResults('image')
+  }
   render() {
     return (
       <section>
