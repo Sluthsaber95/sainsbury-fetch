@@ -32,7 +32,7 @@ export default class SearchBarContainer extends Component<Props, State> {
       .then(response => {
         if (response.status >= 200 && response.status < 400) {
           const responseItemList = response.data.collection.items
-          this.props.collectData(responseItemList.filter((_, i) => i < 10))
+          this.props.collectData(responseItemList.filter((_, i) => i < 20))
         }
         return
       })
