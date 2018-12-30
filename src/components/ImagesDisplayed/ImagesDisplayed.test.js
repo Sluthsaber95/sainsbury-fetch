@@ -18,7 +18,7 @@ it('does not render "ImagesNoResults" by default', () => {
 })
 
 it('render "ImagesNoResults" component when collection is empty', () => {
-  const shallowWrapper = shallow(<ImageDisplayed collection={[{}]} />)
+  const shallowWrapper = shallow(<ImageDisplayed collection={[]} />)
 
   expect(shallowWrapper.find(ImagesNoResults).length).toBe(1)
 })
