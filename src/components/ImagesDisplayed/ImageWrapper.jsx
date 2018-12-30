@@ -1,8 +1,6 @@
 // @flow
 import React, { Fragment } from 'react'
 
-import ImageFallback from './ImageFallback'
-
 type Props = {
   alt: string,
   src: string,
@@ -11,12 +9,14 @@ type Props = {
 export default function ImageWrapper(props: Props) {
   const { alt, src } = props
   return (
-    <Fragment>{src ? <img alt={alt} src={src} /> : <ImageFallback />}</Fragment>
+    <Fragment>
+      {src !== 'Not Real Source' && <img alt={alt} src={src} />}
+    </Fragment>
   )
 }
 
 export const defaultValues = {
-  src: '',
+  src: 'Not Real Source',
   alt: '',
 }
 
