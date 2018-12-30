@@ -20,10 +20,12 @@ export default class SearchBarContainer extends Component<Props, State> {
     }
   }
   getSearchResults = (media_type: 'image' | 'audio') => {
+    const { value } = this.state
+    const queryPassed = value.length > 2 ? value : ''
     return axios
       .get(`https://images-api.nasa.gov/search?`, {
         params: {
-          q: this.state.value,
+          q: queryPassed,
           media_type,
         },
       })
