@@ -41,7 +41,7 @@ export default class ImgSearch extends Component<{}, State> {
   constructor() {
     super()
     this.state = {
-      imgData: [{}],
+      imgData: [{ key: 'KSC-99pp0498' }],
     }
     this.collectRESTData = this.collectRESTData.bind(this)
     this.serializeData = this.serializeData.bind(this)
