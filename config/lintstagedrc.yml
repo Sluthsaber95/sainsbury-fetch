@@ -1,6 +1,5 @@
 ---
 "*.{js,jsx,json,css}":
-- yarn run flow:quick-check
 - yarn run farch
 - yarn run prettier:write
 - git add
