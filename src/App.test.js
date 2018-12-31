@@ -9,13 +9,3 @@ it('renders without crashing', () => {
   expect(wrapper.exists()).toEqual(true)
   wrapper.unmount()
 })
-
-describe('Child Components', () => {
-  const childComponents = ['ImgSearch']
-  childComponents.map(comp => {
-    it(`contains component ${comp}`, () => {
-      const shallowWrapper = shallow(<App />)
-      expect(shallowWrapper.find(`${comp}`).exists()).toBe(true)
-    })
-  })
-})
