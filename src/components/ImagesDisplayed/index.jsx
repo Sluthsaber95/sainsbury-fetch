@@ -11,7 +11,7 @@ type Props = {
 export default function ImagesDisplayed(props: Props) {
   const { collection } = props
   return (
-    <section>
+    <section className="img-display">
       {collection.length === 0 ? (
         <ImagesNoResults />
       ) : (

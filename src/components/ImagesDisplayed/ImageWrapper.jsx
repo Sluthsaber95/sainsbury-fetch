@@ -10,7 +10,9 @@ export default function ImageWrapper(props: Props) {
   const { alt, src } = props
   return (
     <Fragment>
-      {src !== 'Not Real Source' && <img alt={alt} src={src} />}
+      {src !== 'Not Real Source' && (
+        <img className="img-thumb" alt={alt} src={src} />
+      )}
     </Fragment>
   )
 }

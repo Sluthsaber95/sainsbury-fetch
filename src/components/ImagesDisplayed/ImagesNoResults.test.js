@@ -10,6 +10,6 @@ it('renders without crashing', () => {
 
 it('renders the exact same HTML element', () => {
   const shallowWrapper = shallow(<ImagesNoResults />)
-  const html = `<div>No Results Found</div>`
+  const html = `<div class=\"img-no-results\">Sorry! We couldn&#x27;t find the results you were looking for</div>`
   expect(shallowWrapper.html()).toBe(html)
 })
