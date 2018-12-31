@@ -1,0 +1,8 @@
+{
+  "baseUrl": "http://localhost:3000/",
+  "defaultCommandTimeout": 10000,
+  "pageLoadTimeout": 5000,
+  "projectId": "jd90q7",
+  "screenshot": false,
+  "video": false
+}

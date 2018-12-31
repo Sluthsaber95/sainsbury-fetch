@@ -49,7 +49,8 @@
     "test": "react-scripts test",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "cypress:dev": "./node_modules/.bin/cypress open --env configFile=dev"
+    "cypress": "cypress run --env configFile=ci --config watchForFileChanges=false",
+    "cypress:dev": "cypress open --env configFile=dev"
   },
   "farch": {
     "src/*.css": "^([a-zA-Z]{0,}).css$",
@@ -66,7 +67,8 @@
   "lint-staged": {},
   "husky": {
     "hooks": {
-      "pre-commit": "export CI=true && yarn test && lint-staged -c ./config/lintstagedrc.yml"
+      "pre-commit": "export CI=true && yarn run 'flow:quick-check' && yarn test && lint-staged -c ./config/lintstagedrc.yml",
+      "pre-push": "export CI=true && yarn run cypress && yarn test && yarn run flow:status"
     }
   },
   "eslintConfig": {
