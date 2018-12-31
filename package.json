@@ -66,7 +66,7 @@
   "lint-staged": {},
   "husky": {
     "hooks": {
-      "pre-commit": "export CI=true && flow status --flowconfig-name ./config/flowconfig.yml && flow stop --flowconfig-name ./config/flowconfig.yml && lint-staged -c ./config/lintstagedrc.yml && yarn test"
+      "pre-commit": "export CI=true && yarn test && lint-staged -c ./config/lintstagedrc.yml"
     }
   },
   "eslintConfig": {
