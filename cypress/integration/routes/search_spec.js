@@ -1,3 +1,5 @@
+Cypress.Screenshot.defaults({ screenshotOnRunFailure: false })
+
 describe('/search - As a user...', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/')
