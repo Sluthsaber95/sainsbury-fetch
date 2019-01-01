@@ -5,7 +5,6 @@ import { DebounceInput } from 'react-debounce-input'
 import './SearchBar.scss'
 
 type Props = {
-  value: string,
   callback: (event: SyntheticInputEvent<HTMLInputElement>) => void,
 }
 
@@ -17,7 +16,6 @@ export default function SearchBar(props: Props) {
       debounceTimeout={1000}
       placeholder="Search"
       onChange={event => props.callback(event)}
-      value={props.value}
       type="text"
     />
   )

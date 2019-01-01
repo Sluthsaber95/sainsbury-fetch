@@ -1,13 +1,8 @@
 // @flow
 import React, { Component } from 'react'
 
-import SearchBarContainer from '../../containers/SearchBarContainer'
+import SearchBar from '../../components/SearchBar'
 import ImagesDisplayed from '../../components/ImagesDisplayed'
-
-interface ThumbImgData {
-  links: Array<{ href: string }>;
-  data: Array<{ nasa_id: string, title: string }>;
-}
 
 interface ThumbImgSerialized {
   alt: string;
@@ -16,61 +11,43 @@ interface ThumbImgSerialized {
 }
 
 type State = {
-  imgData: Array<Object>,
+  data: Array<ThumbImgSerialized>,
+  search: string,
 }
 
-const emptyCollection: Array<ThumbImgData> = [
-  {
-    links: [
-      {
-        href: '',
-      },
-    ],
-    data: [
-      {
-        nasa_id: '',
-        title: '',
-      },
-    ],
-  },
-]
+type Props = {
+  data: Array<ThumbImgSerialized>,
+  getSearchResults: Function,
+}
 
-export default class ImgSearch extends Component<{}, State> {
-  collectRESTData: (data: Array<ThumbImgData>) => void
-  serializeData: (itemList: Array<ThumbImgData>) => Array<ThumbImgSerialized>
-  constructor() {
-    super()
+type DerivedSP = {
+  data: Array<ThumbImgSerialized>,
+}
+
+export default class ImgSearch extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props)
     this.state = {
-      imgData: [{ key: 'KSC-99pp0498' }],
+      data: [{ src: ' ', key: ' ', alt: ' ' }],
+      search: '',
     }
-    this.collectRESTData = this.collectRESTData.bind(this)
-    this.serializeData = this.serializeData.bind(this)
   }
-  collectRESTData(data: Array<ThumbImgData>) {
-    const itemList = data ? data : emptyCollection
-    const itemsSanitized = this.serializeData(itemList)
-    this.setState(() => {
-      return { imgData: itemsSanitized }
-    })
+  static getDerivedStateFromProps = (
+    nextProps: DerivedSP,
+    prevState: DerivedSP
+  ) => {
+    return nextProps.data === prevState.data ? {} : { data: nextProps.data }
   }
-  serializeData(itemList: Array<ThumbImgData>): Array<ThumbImgSerialized> {
-    return itemList.map(items => {
-      let data: Array<{ nasa_id: string, title: string }> = items.data
-      let links: Array<{ href: string }> = items.links
-      const { nasa_id, title } = data[0]
-      const { href } = links[0]
-      return {
-        alt: title,
-        key: nasa_id,
-        src: href,
-      }
-    })
+  handleChange = (event: SyntheticInputEvent<HTMLInputElement>) => {
+    this.props.getSearchResults('image', event.target.value)
   }
   render() {
     return (
       <section>
-        <SearchBarContainer collectData={this.collectRESTData} />
-        <ImagesDisplayed collection={this.state.imgData} />
+        <article className="search-bar-wrapper">
+          <SearchBar callback={this.handleChange} />
+        </article>
+        <ImagesDisplayed collection={this.state.data} />
       </section>
     )
   }

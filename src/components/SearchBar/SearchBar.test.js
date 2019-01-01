@@ -8,27 +8,6 @@ it('renders without crashing', () => {
   expect(shallowWrapper.exists()).toEqual(true)
 })
 
-it('does not pass props to input when character length is 2 or less', () => {
-  const mockFn = jest.fn()
-  const shallowWrapper = shallow(<SearchBar callback={mockFn} />)
-  const valuePassed = 'Ap'
-
-  shallowWrapper.simulate('change', { target: { value: valuePassed } })
-  expect(mockFn).toHaveBeenCalled()
-  expect(shallowWrapper.props().value).not.toBe(valuePassed)
-})
-
-it('passes props to input when character length is 3 or more', () => {
-  const mockFn = jest.fn()
-  const shallowWrapper = shallow(<SearchBar callback={mockFn} />)
-  const valuePassed = 'App'
-
-  shallowWrapper.simulate('change', { target: { value: valuePassed } })
-  shallowWrapper.setProps({ value: valuePassed })
-  expect(mockFn).toHaveBeenCalled()
-  expect(shallowWrapper.props().value).toBe(valuePassed)
-})
-
 const placeholder = 'Search'
 it(`contains correct placeholder to "${placeholder}"`, () => {
   const shallowWrapper = shallow(<SearchBar />)
