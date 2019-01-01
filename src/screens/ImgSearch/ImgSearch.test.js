@@ -12,7 +12,7 @@ it('renders without crashing', () => {
 })
 
 describe('Child Components', () => {
-  const childComponents = ['SearchBarContainer', 'ImagesDisplayed']
+  const childComponents = ['SearchBar', 'ImagesDisplayed']
   childComponents.map(comp => {
     it(`contains component ${comp}`, () => {
       const shallowWrapper = shallow(<ImgSearch />)
@@ -99,7 +99,8 @@ describe('ImgSearch Methods', () => {
           ],
         },
       ]
-      const jsonStringified = '{"imgData":[{"alt":"","key":"","src":""}]}'
+      const jsonStringified =
+        '{"imgData":[{"alt":"","key":"","src":""}],"value":""}'
       const wrapper = mount(<ImgSearch />)
 
       wrapper.instance().collectRESTData(dataUnserialized)

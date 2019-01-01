@@ -1,7 +1,8 @@
 // @flow
 import React, { Component } from 'react'
+import axios from 'axios'
 
-import SearchBarContainer from '../../containers/SearchBarContainer'
+import SearchBar from '../../components/SearchBar'
 import ImagesDisplayed from '../../components/ImagesDisplayed'
 
 interface ThumbImgData {
@@ -17,6 +18,7 @@ interface ThumbImgSerialized {
 
 type State = {
   imgData: Array<Object>,
+  value: string,
 }
 
 const emptyCollection: Array<ThumbImgData> = [
@@ -42,6 +44,7 @@ export default class ImgSearch extends Component<{}, State> {
     super()
     this.state = {
       imgData: [{ key: 'KSC-99pp0498' }],
+      value: '',
     }
     this.collectRESTData = this.collectRESTData.bind(this)
     this.serializeData = this.serializeData.bind(this)
@@ -52,6 +55,31 @@ export default class ImgSearch extends Component<{}, State> {
     this.setState(() => {
       return { imgData: itemsSanitized }
     })
+  }
+  getSearchResults = (media_type: 'image' | 'audio') => {
+    const { value } = this.state
+    const queryPassed = value.length > 2 ? value : ''
+    return axios
+      .get(`https://images-api.nasa.gov/search?`, {
+        params: {
+          q: queryPassed,
+          media_type,
+        },
+      })
+      .then(response => {
+        if (response.status >= 200 && response.status < 400) {
+          const responseItemList = response.data.collection.items
+          this.collectRESTData(responseItemList.filter((_, i) => i < 20))
+        }
+        return
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+  handleChange = (event: SyntheticInputEvent<HTMLInputElement>) => {
+    this.setState({ value: event.target.value })
+    this.getSearchResults('image')
   }
   serializeData(itemList: Array<ThumbImgData>): Array<ThumbImgSerialized> {
     return itemList.map(items => {
@@ -66,10 +94,16 @@ export default class ImgSearch extends Component<{}, State> {
       }
     })
   }
+  componentDidMount() {
+    this.setState({ value: '' })
+    this.getSearchResults('image')
+  }
   render() {
     return (
       <section>
-        <SearchBarContainer collectData={this.collectRESTData} />
+        <article className="search-bar-wrapper">
+          <SearchBar callback={this.handleChange} />
+        </article>
         <ImagesDisplayed collection={this.state.imgData} />
       </section>
     )
