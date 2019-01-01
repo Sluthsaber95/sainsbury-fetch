@@ -16,7 +16,6 @@ type Props = {
 export default function AssetLayout(props: Props) {
   const { nasa_id, metadata } = props
   const { description, location, photographer, title } = metadata
-  console.log(metadata)
   return (
     <div>
       <div>{location}</div>
