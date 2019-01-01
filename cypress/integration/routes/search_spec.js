@@ -51,7 +51,7 @@ describe('/search - As a user...', () => {
           cy.get('.search-bar').type(word)
 
           cy.get('.img-display')
-            .children('.img-thumb')
+            .find('.img-thumb')
             .should('have.attr', 'alt', defaultAlt)
         })
       })
