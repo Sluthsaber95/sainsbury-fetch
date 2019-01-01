@@ -9,6 +9,7 @@ import {
 import axios from 'axios'
 
 import ScreenImgSearch from './screens/ImgSearch'
+import ScreenAssetMain from './screens/AssetMain'
 
 interface ThumbImgData {
   links: Array<{ href: string }>;
@@ -103,14 +104,18 @@ class App extends Component<{}, State> {
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/search" />} />
             <Route
-              exact
               path="/search"
-              render={() => (
+              render={props => (
                 <ScreenImgSearch
                   data={this.state.imgThumbData}
                   getSearchResults={this.getSearchResults}
+                  {...props}
                 />
               )}
+            />
+            <Route
+              path="/asset/:nasa_id"
+              render={props => <ScreenAssetMain {...props} />}
             />
           </Switch>
         </section>
