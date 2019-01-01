@@ -4,11 +4,6 @@ import React, { Component } from 'react'
 import SearchBar from '../../components/SearchBar'
 import ImagesDisplayed from '../../components/ImagesDisplayed'
 
-interface ThumbImgData {
-  links: Array<{ href: string }>;
-  data: Array<{ nasa_id: string, title: string }>;
-}
-
 interface ThumbImgSerialized {
   alt: string;
   key: string;
