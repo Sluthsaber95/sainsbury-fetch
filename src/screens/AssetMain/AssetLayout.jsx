@@ -18,20 +18,21 @@ type Props = {
 export default function AssetLayout(props: Props) {
   const { media_type, metadata, nasa_id } = props
   const { description, location, photographer, title } = metadata
-  const src = media_type === 'image' 
-    ? `https://images-assets.nasa.gov/${media_type}/${nasa_id}/${nasa_id}~medium.jpg`
-    : undefined
+  const src =
+    media_type === 'image'
+      ? `https://images-assets.nasa.gov/${media_type}/${nasa_id}/${nasa_id}~medium.jpg`
+      : undefined
   return (
     <div>
       <div>{location}</div>
       <div>{description}</div>
       <div>{title}</div>
       <div>{photographer}</div>
-      {
-        media_type === 'image' ?
+      {media_type === 'image' ? (
         <img src={src} alt={location} />
+      ) : (
         <Img src={src} alt={location} />
-      }
+      )}
     </div>
   )
 }
