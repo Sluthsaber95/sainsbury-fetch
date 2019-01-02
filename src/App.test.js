@@ -91,7 +91,8 @@ describe('App Methods', () => {
           ],
         },
       ]
-      const jsonStringified = '{"imgThumbData":[{"alt":"","key":"","src":""}]}'
+      const jsonStringified =
+        '{"assetType":"image","imgThumbData":[{"src":" ","key":" ","alt":" "}],"audioData":[{"description":" ","location":" ","media_type":" ","nasa_id":" ","photographer":" "}]}'
       const wrapper = mount(<App />)
 
       wrapper.instance().collectRESTData(dataUnserialized)
