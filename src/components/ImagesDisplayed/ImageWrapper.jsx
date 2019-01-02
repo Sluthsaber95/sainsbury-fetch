@@ -1,6 +1,7 @@
 // @flow
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import Img from 'react-image'
 
 type Props = {
   alt: string,
@@ -15,7 +16,7 @@ export default function ImageWrapper(props: Props) {
     <Fragment>
       {src !== 'Not Real Source' && (
         <Link to={`/asset/${nasa_id}`}>
-          <img className="img-thumb" alt={alt} src={src} />
+          <Img className="img-thumb" alt={alt} src={src} />
         </Link>
       )}
     </Fragment>
