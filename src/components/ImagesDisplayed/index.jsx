@@ -15,8 +15,15 @@ export default function ImagesDisplayed(props: Props) {
       {collection.length === 0 ? (
         <ImagesNoResults />
       ) : (
-        collection.map(({ alt, src, key }) => {
-          return <ImageWrapper src={src} alt={alt} key={key} nasa_id={key} />
+        collection.map(({ alt, src, key }, i) => {
+          return (
+            <ImageWrapper
+              src={src}
+              alt={alt}
+              key={key + `${i}`}
+              nasa_id={key}
+            />
+          )
         })
       )}
     </section>
