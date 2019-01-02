@@ -10,7 +10,7 @@ interface AudioDataSerialized {
 }
 
 type Props = {
-  collection: Array<AudioDataSerialized>,
+  collection: AudioDataSerialized,
 }
 
 export default function AudioDisplayed(props: Props) {
