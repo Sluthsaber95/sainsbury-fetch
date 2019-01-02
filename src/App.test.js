@@ -91,8 +91,21 @@ describe('App Methods', () => {
           ],
         },
       ]
-      const jsonStringified =
-        '{"assetType":"image","imgThumbData":[{"src":" ","key":" ","alt":" "}],"audioData":[{"description":" ","location":" ","media_type":" ","nasa_id":" ","photographer":" "}]}'
+      const stateObject = {
+        assetType: 'image',
+        audioData: [
+          {
+            description: ' ',
+            location: ' ',
+            media_type: ' ',
+            nasa_id: ' ',
+            photographer: ' ',
+          },
+        ],
+        media_type: 'image',
+        imgThumbData: [{ src: ' ', key: ' ', alt: ' ' }],
+      }
+      const jsonStringified = JSON.stringify(stateObject)
       const wrapper = mount(<App />)
 
       wrapper.instance().collectRESTData(dataUnserialized)

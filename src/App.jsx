@@ -8,8 +8,8 @@ import {
 } from 'react-router-dom'
 import axios from 'axios'
 
-import ScreenImgSearch from './screens/ImgSearch'
 import ScreenAssetMain from './screens/AssetMain'
+import ScreenImgSearch from './screens/ImgSearch'
 
 interface AudioDataSerialized {
   description: string;
@@ -75,6 +75,7 @@ class App extends Component<{}, State> {
   constructor() {
     super()
     this.collectRESTData = this.collectRESTData.bind(this)
+    this.currentMediaType = this.currentMediaType.bind(this)
     this.getSearchResults = this.getSearchResults.bind(this)
     this.serializeAudio = this.serializeAudio.bind(this)
     this.serializeData = this.serializeData.bind(this)
@@ -82,7 +83,6 @@ class App extends Component<{}, State> {
   }
   state = {
     assetType: 'image',
-    imgThumbData: [{ src: ' ', key: ' ', alt: ' ' }],
     audioData: [
       {
         description: ' ',
@@ -92,6 +92,8 @@ class App extends Component<{}, State> {
         photographer: ' ',
       },
     ],
+    media_type: 'image',
+    imgThumbData: [{ src: ' ', key: ' ', alt: ' ' }],
   }
   collectRESTData(data: Array<ThumbImgData>, media_type: string) {
     let itemList
@@ -121,8 +123,12 @@ class App extends Component<{}, State> {
         break
     }
   }
+  currentMediaType(media_type) {
+    this.setState({ media_type })
+  }
   getSearchResults(media_type: 'image' | 'audio', value: string): void {
     const queryPassed = value.length > 2 ? value : ''
+    this.currentMediaType(media_type)
     return axios
       .get(`https://images-api.nasa.gov/search?`, {
         params: {
@@ -204,7 +210,12 @@ class App extends Component<{}, State> {
             />
             <Route
               path="/asset/:nasa_id"
-              render={props => <ScreenAssetMain {...props} />}
+              render={props => (
+                <ScreenAssetMain
+                  {...props}
+                  media_type={this.state.media_type}
+                />
+              )}
             />
           </Switch>
         </section>
