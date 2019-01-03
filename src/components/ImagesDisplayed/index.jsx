@@ -28,7 +28,7 @@ function ImagesDisplayed(props: Props) {
         ) : (
           collection.map(({ alt, src, key }, i) => {
             return (
-              <Grid item xs={6} sm={4}>
+              <Grid item xs={6} sm={4} lg={3}>
                 <ImageWrapper
                   src={src}
                   alt={alt}

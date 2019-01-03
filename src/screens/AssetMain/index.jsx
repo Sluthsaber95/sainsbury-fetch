@@ -64,10 +64,7 @@ export default class AssetMain extends Component<Props, State> {
     const media_type = this.props.media_type
     try {
       axios
-        .get(
-          `https://images-assets.nasa.gov/${media_type}/${nasa_id}/metadata.json`,
-          {}
-        )
+        .get(`https://images-assets.nasa.gov/${media_type}/${nasa_id}/metadata.json`)
         .then(response => {
           const { data, status } = response
           if (status >= 200 && status < 400) {

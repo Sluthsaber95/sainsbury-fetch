@@ -20,12 +20,13 @@ type Props = {
 }
 
 const styles = theme => ({
+  list: {
+    width: '100vw',
+    backgroundColor: theme.palette.background.paper,
+  },
   root: {
     flexGrow: 1,
     maxWidth: 752,
-  },
-  demo: {
-    backgroundColor: theme.palette.background.paper,
   },
   title: {
     margin: `${theme.spacing.unit * 4}px 0 ${theme.spacing.unit * 2}px`,
@@ -37,39 +38,37 @@ function AudioDisplayed(props: Props) {
   return (
     <section>
       <Grid container spacing={16}>
-        <Grid item xs={12} md={6}>
-          <div className={classes.demo}>
-            <List dense={false}>
-              {
-                collection.map(({ description, location, nasa_id }) => {
-                  const shortenDescription = text => {
-                    if (!text) {
-                      return ''
-                    } else if (text.length > 100) {
-                      return text.slice(0, 99) + '...'
-                    }
-                    return text
+        <Grid item xs={12} md={12} lg={12}>
+          <List className={classes.list} dense={false}>
+            {
+              collection.map(({ description, location, nasa_id }) => {
+                const shortenDescription = text => {
+                  if (!text) {
+                    return ''
+                  } else if (text.length > 100) {
+                    return text.slice(0, 99) + '...'
                   }
-                  const finalDescription = shortenDescription(description)
-                  return (
-                    <Fragment>
-                      <ListItem alignItems="flex-start">
-                        <ListItemIcon>
-                          <Audiotrack />
-                        </ListItemIcon>
-                        <Link to={`/asset/${nasa_id}`} key={nasa_id} style={{ 'text-decoration': 'none' }}>
-                          <ListItemText
-                            primary={finalDescription}
-                            secondary={location}
-                          />
-                        </Link>
-                      </ListItem>
-                    </Fragment>
-                  )
-                })
-              }
-            </List>
-          </div>
+                  return text
+                }
+                const finalDescription = shortenDescription(description)
+                return (
+                  <Fragment>
+                    <ListItem xs={12} md={12} lg={12} alignItems="flex-start">
+                      <ListItemIcon>
+                        <Audiotrack />
+                      </ListItemIcon>
+                      <Link to={`/asset/${nasa_id}`} key={nasa_id} style={{ 'text-decoration': 'none' }}>
+                        <ListItemText
+                          primary={finalDescription}
+                          secondary={location}
+                        />
+                      </Link>
+                    </ListItem>
+                  </Fragment>
+                )
+              })
+            }
+          </List>
         </Grid>
       </Grid>
       {}

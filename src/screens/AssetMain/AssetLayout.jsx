@@ -21,7 +21,7 @@ export default function AssetLayout(props: Props) {
   const { media_type, metadata, nasa_id } = props
   const { description, location, photographer, title } = metadata
   const src = media_type === 'image'
-      ? `https://images-assets.nasa.gov/${media_type}/${nasa_id}/${nasa_id}~original.jpg`
+      ? `https://images-assets.nasa.gov/${media_type}/${nasa_id}/${nasa_id}~medium.jpg`
       : undefined
     
   let brokenLinkPresent = false
@@ -41,7 +41,6 @@ export default function AssetLayout(props: Props) {
         !brokenLinkPresent && (
           <ReactAudioPlayer
             src={`http://images-assets.nasa.gov/audio/${nasa_id}/${nasa_id}~128k.mp3`}
-            autoPlay
             controls
           />
         )
