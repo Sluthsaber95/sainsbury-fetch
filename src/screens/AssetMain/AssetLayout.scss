@@ -1,0 +1,22 @@
+@media(min-width: 0px){
+  .img-main__wrapper {
+    margin: auto 5vw;
+  }
+  .img-main__wrapper {
+    .img-main {
+      width: 90vw;
+      border-radius: 10px;
+    }
+  }
+  .img-main__text {
+    margin: auto 5vw;
+  }
+  .audio-player__wrapper {
+    padding: 1em 0;
+  }
+  .audio-player__wrapper {
+    .audio-player {
+      margin: auto 5vw;
+    }
+  }
+}
