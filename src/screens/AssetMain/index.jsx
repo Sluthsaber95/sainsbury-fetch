@@ -34,8 +34,6 @@ type Props = {
   media_type: 'image' | 'audio',
 }
 
-const AssetLayoutAudio = () => <div>Asset Layout Audio Here!!</div>
-
 export default class AssetMain extends Component<Props, State> {
   getData: () => void
   serializeAudioJSONL: (data: JSONAudio) => void
@@ -107,9 +105,7 @@ export default class AssetMain extends Component<Props, State> {
       data['AVAIL:Photographer'] === ''
         ? 'Photographer Unknown'
         : data['AVAIL:Photographer']
-    const title = /^KSC/.test(data['AVAIL:Title'])
-      ? '[ No Title]'
-      : data['AVAIL:Title']
+    const title = data['AVAIL:Title']
 
     this.setState(() => {
       return {
