@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react'
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper'
 import { withStyles } from '@material-ui/core';
 
 import ImageWrapper from './ImageWrapper'
@@ -16,21 +15,11 @@ const styles = theme => ({
     display: 'grid',
     gridTemplateColumns: 'repeat(12, 1fr)',
     gridGap: `${theme.spacing.unit * 3}px`,
-  },
-  paper: {
-    padding: theme.spacing.unit,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    whiteSpace: 'nowrap',
-    marginBottom: theme.spacing.unit,
-  },
-  divider: {
-    margin: `${theme.spacing.unit * 2}px 0`,
-  },
+  }
 });
 
 function ImagesDisplayed(props: Props) {
-  const { collection, classes } = props
+  const { collection } = props
   return (
     <section className="img-display">
       <Grid container spacing={0}>
