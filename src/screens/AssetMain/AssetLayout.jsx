@@ -21,7 +21,7 @@ export default function AssetLayout(props: Props) {
   const { media_type, metadata, nasa_id } = props
   const { description, location, photographer, title } = metadata
   const src = media_type === 'image'
-      ? `https://images-assets.nasa.gov/${media_type}/${nasa_id}/${nasa_id}~medium.jpg`
+      ? `https://images-assets.nasa.gov/${media_type}/${nasa_id}/${nasa_id}~original.jpg`
       : undefined
     
   let brokenLinkPresent = false
