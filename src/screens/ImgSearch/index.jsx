@@ -1,5 +1,8 @@
 // @flow
 import React, { Component } from 'react'
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
 import AudioDisplayed from '../../components/AudioDisplayed'
 import ImagesDisplayed from '../../components/ImagesDisplayed'
@@ -27,7 +30,19 @@ type DerivedSP = {
   dataImg: Array<ThumbImgSerialized>,
 }
 
-export default class ImgSearch extends Component<Props, State> {
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    margin: 15
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+});
+
+class ImgSearch extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
@@ -73,21 +88,31 @@ export default class ImgSearch extends Component<Props, State> {
   }
   render() {
     const { dataAudio, dataImg, selectedOption } = this.state
+    const { classes } = this.props
     return (
-      <section>
-        <article className="search-bar-wrapper">
-          <SearchBar callback={this.handleInputChange} />
-          <ToggleImgAudio
-            handleOptionChange={this.handleOptionChange}
-            selectedOption={selectedOption}
-          />
-        </article>
-        {selectedOption === 'image' ? (
-          <ImagesDisplayed collection={dataImg} />
-        ) : (
-          <AudioDisplayed collection={dataAudio} />
-        )}
+      <section className={classes.root}>
+        <Grid container spacing={24}>
+          <Grid item xs={12}>
+            <SearchBar callback={this.handleInputChange} />
+          </Grid>
+          <Grid item xs={12}>
+            <ToggleImgAudio
+              handleOptionChange={this.handleOptionChange}
+              selectedOption={selectedOption}
+            />
+          </Grid>
+        {/* <article className="search-bar-wrapper">
+        </article> */}
+            {selectedOption === 'image' ? (
+              <ImagesDisplayed collection={dataImg} />
+              ) : (
+              <AudioDisplayed collection={dataAudio} />
+              )
+            }
+        </Grid>
       </section>
     )
   }
 }
+
+export default withStyles(styles)(ImgSearch)
