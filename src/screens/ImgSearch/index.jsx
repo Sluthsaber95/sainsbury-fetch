@@ -1,8 +1,10 @@
 // @flow
 import React, { Component } from 'react'
 
-import SearchBar from '../../components/SearchBar'
+import AudioDisplayed from '../../components/AudioDisplayed'
 import ImagesDisplayed from '../../components/ImagesDisplayed'
+import SearchBar from '../../components/SearchBar'
+import ToggleImgAudio from '../../components/ToggleImgAudio'
 
 interface ThumbImgSerialized {
   alt: string;
@@ -11,43 +13,80 @@ interface ThumbImgSerialized {
 }
 
 type State = {
-  data: Array<ThumbImgSerialized>,
+  dataImg: Array<ThumbImgSerialized>,
   search: string,
+  selectedOption: string,
 }
 
 type Props = {
-  data: Array<ThumbImgSerialized>,
+  dataImg: Array<ThumbImgSerialized>,
   getSearchResults: Function,
 }
 
 type DerivedSP = {
-  data: Array<ThumbImgSerialized>,
+  dataImg: Array<ThumbImgSerialized>,
 }
 
 export default class ImgSearch extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      data: [{ src: ' ', key: ' ', alt: ' ' }],
+      dataImg: [{ src: ' ', key: ' ', alt: ' ' }],
       search: '',
+      selectedOption: 'image',
+      value: '',
     }
   }
   static getDerivedStateFromProps = (
     nextProps: DerivedSP,
     prevState: DerivedSP
   ) => {
-    return nextProps.data === prevState.data ? {} : { data: nextProps.data }
+    if (nextProps.dataAudio !== prevState.dataAudio) {
+      return { dataAudio: nextProps.dataAudio }
+    }
+    if (nextProps.dataImg !== prevState.dataImg) {
+      return { dataImg: nextProps.dataImg }
+    }
+    return {}
   }
-  handleChange = (event: SyntheticInputEvent<HTMLInputElement>) => {
-    this.props.getSearchResults('image', event.target.value)
+  handleInputChange = (event: SyntheticInputEvent<HTMLInputElement>) => {
+    const eventVal =
+      event && event.target ? event.target.value : this.state.value
+    const option = this.state.selectedOption
+    this.setState(() => {
+      this.props.getSearchResults(option, eventVal)
+      return { value: eventVal }
+    })
+  }
+  handleOptionChange = event => {
+    this.setState({
+      selectedOption: event.target.value,
+    })
+  }
+  componentDidMount() {
+    this.handleInputChange('')
+  }
+  componentDidUpdate(_, prevState) {
+    if (this.state.selectedOption !== prevState.selectedOption) {
+      this.handleInputChange(this.state.selectedOption, this.state.value)
+    }
   }
   render() {
+    const { dataAudio, dataImg, selectedOption } = this.state
     return (
       <section>
         <article className="search-bar-wrapper">
-          <SearchBar callback={this.handleChange} />
+          <SearchBar callback={this.handleInputChange} />
+          <ToggleImgAudio
+            handleOptionChange={this.handleOptionChange}
+            selectedOption={selectedOption}
+          />
         </article>
-        <ImagesDisplayed collection={this.state.data} />
+        {selectedOption === 'image' ? (
+          <ImagesDisplayed collection={dataImg} />
+        ) : (
+          <AudioDisplayed collection={dataAudio} />
+        )}
       </section>
     )
   }

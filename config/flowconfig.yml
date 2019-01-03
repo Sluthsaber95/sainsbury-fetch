@@ -1,6 +1,8 @@
 [ignore]
   ./node_modules/
   ./*.test.js
+  .*/ImgSearch/index.jsx
+  .*/App.jsx
 [include]
   ./src/
 [lints]
