@@ -7,18 +7,18 @@ describe('/search - As a user...', () => {
   context('I see', () => {
     it('An empty search field', () => {
       const emptyString = ''
-      cy.get('input[type=text].search-bar').should('have.text', '')
+      cy.get('input[type=text]').should('have.text', '')
     })
     it('Within the search box - text "Search"', () => {
-      cy.get('input[type=text].search-bar').should(
+      cy.get('input[type=text]').should(
         'have.attr',
         'placeholder',
         'Search'
       )
     })
     it('Default Images (plural) below the search bar"', () => {
-      cy.get('.img-display')
-        .children()
+      cy.get('.img-display__wrapper')
+        .children('div')
         .should('have.length', 20)
     })
   })
@@ -48,7 +48,7 @@ describe('/search - As a user...', () => {
         it(`${
           wordLength.description
         } the default screen will not change when entering ${word}`, () => {
-          cy.get('.search-bar').type(word)
+          cy.get('input[type=text]').type(word)
 
           cy.get('.img-display')
             .find('.img-thumb')
@@ -58,8 +58,8 @@ describe('/search - As a user...', () => {
     })
 
     longWordSet.forEach(word => {
-      it(`3 or more characters - a search initiates that returns me images, that are not the same as the default images - for the word ${word}`, () => {
-        cy.get('.search-bar').type(word)
+      it(`3 or more characters - returns me different images than default for the word ${word}`, () => {
+        cy.get('input[type=text]').type(word)
 
         cy.get('.img-display')
           .children('.img-thumb')
@@ -70,12 +70,26 @@ describe('/search - As a user...', () => {
       it(`Typing an unrecoginisable set of characters - such as ${word} should show me "Sorry, we couldn\'t find the results you were looking for"`, () => {
         const noResultStatement =
           "Sorry! We couldn't find the results you were looking for"
-        cy.get('.search-bar').type(word)
+        cy.get('input[type=text]').type(word)
 
         cy.get('.img-no-results')
           .first()
           .contains(noResultStatement)
       })
+    })
+  })
+  context('When I pick', () => {
+    const URLDesignated = '/asset/KSC-99pp0496'
+    it(`an image, it should take me to the designated URL ${URLDesignated}`, () => {
+      const options = {
+        force: true,
+        multiple: true
+      }
+      cy.get('.img-thumb')
+        .first('div', { timeout: 5000})
+        .click(options)
+
+      cy.url().should('include', URLDesignated)
     })
   })
 })

@@ -6,6 +6,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import axios from 'axios'
 
 import ScreenAssetMain from './screens/AssetMain'
@@ -195,6 +196,7 @@ class App extends Component<{}, State> {
     return (
       <Router>
         <section>
+          <CssBaseline />
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/search" />} />
             <Route

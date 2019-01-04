@@ -10,7 +10,7 @@ it('renders without crashing', () => {
 })
 
 it('render "ImagesNoResults" component when collection is empty', () => {
-  const shallowWrapper = shallow(<ImageDisplayed collection={[]} />)
+  const shallowWrapper = shallow(<ImageDisplayed collection={[{}]} />)
 
-  expect(shallowWrapper.find(ImagesNoResults).length).toBe(1)
+  expect(shallowWrapper.find(ImagesNoResults).length).toBe(0)
 })
