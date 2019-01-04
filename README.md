@@ -1,4 +1,4 @@
-# Booking Go Assignment v0.1.1
+# Sainsbury's NASA Technical Test
 
 ## Getting Started
 
@@ -6,23 +6,28 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them. Use the exact runtimes and package managers below
+What things you need to install the software and how to install them. Use the exact runtimes and package managers below - other version may yield unexpected results
 
 ```
-- Node: 10.14.2
-- NPM": 6.5.0,
-- Yarn: 1.10.1
+Node: 10.14.2
+
+NPM: 6.5.0
+
+Yarn: 1.10.1
 ```
 
 ### Installing
-This project only utlizes `Yarn` and has not been tested for `NPM` - i.e. there is currently no `package-lock.json` file only `yarn.lock`.
+This project only utlizes `Yarn` and has not been tested for `NPM` - i.e. there is currently no `package-lock.json` file only `yarn.lock`, thus using NPM may yield unexpected results.
+
+NPM is shown here so that you can use NPM to install [Yarn](https://yarnpkg.com/en/docs/getting-started), or install Yarn by itself. Please note here that this version of NPM comes by default with 10.14.2 NodeJS
 
 ```
 yarn install
 ```
+### Straight to Live Version
+Built & Hosted on Netlify - https://happy-darwin-774cee.netlify.com/search
 
 ### Start up the project
-End with an example of getting some data out of the system or using it for a little demo
 
 ```
 yarn start
@@ -96,12 +101,11 @@ yarn run cypress:dev
 
 The GUI will consist of 3 separate tests, I recommend just running all of them at once they should take under 3 minutes.
 
-Unfortunately not all the tests here have been completed - in this case asset__spec--images, as for some reason on pageload/renders on Cypress doesn't show the asset loading pro
+Unfortunately not all the tests here have been completed - in this case asset__spec--image
 
-On the other hand the application loads the asset on route /asset/:id fine
+For some reason on pageload/renders on Cypress doesn't show the asset loading up properly. On the other hand the application loads the asset on route /asset/:id fine - need to shoot the Cypress team on Twitter on whether I'm using the tool correctly or if there is a potential bug in the tooling.
 
 <br/>
-
 
 
 ## Build Project
@@ -110,9 +114,8 @@ On the other hand the application loads the asset on route /asset/:id fine
 yarn run build
 ```
 
-
-## Versioning
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+## Extras
+For additional notes, visit the /docs section in this project 
+- Improvements to the project - see `/Notes On Project/What can I improve?.md`
+- Technical Test Checklist - see `/Notes On Project/Technical Test Checklist.md`
+- Agile Tickets - see `/Tickets`
