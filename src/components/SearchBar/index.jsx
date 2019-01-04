@@ -1,11 +1,11 @@
 // @flow
 import React from 'react'
 import { Debounce } from 'react-throttle'
-import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
+import { withStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import InputBase from '@material-ui/core/InputBase'
+import IconButton from '@material-ui/core/IconButton'
+import SearchIcon from '@material-ui/icons/Search'
 
 import './SearchBar.scss'
 
@@ -13,7 +13,7 @@ const styles = {
   root: {
     padding: '2px 4px',
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   input: {
     marginLeft: 8,
@@ -26,11 +26,19 @@ const styles = {
     width: 1,
     height: 28,
     margin: 4,
-  }
-};
+  },
+}
+
+type Classes = {
+  root: Object,
+  input: Object,
+  iconButton: Object,
+  divide: Object,
+}
 
 type Props = {
   callback: (event: SyntheticInputEvent<HTMLInputElement>) => void,
+  classes: Classes,
 }
 
 function SearchBar(props: Props) {
@@ -41,8 +49,8 @@ function SearchBar(props: Props) {
         <SearchIcon />
       </IconButton>
       <Debounce time="300" handler="onChange">
-        <InputBase 
-          className={`${classes.input} search-bar`} 
+        <InputBase
+          className={`${classes.input} search-bar`}
           onChange={event => props.callback(event)}
           placeholder="Search"
         />
@@ -53,10 +61,10 @@ function SearchBar(props: Props) {
 
 export default withStyles(styles)(SearchBar)
 //   className="search-bar"
-  // <DebounceInput
-  //   minLength={1}
-  //   debounceTimeout={1000}
-  //   placeholder="Search"
-  //   onChange={event => props.callback(event)}
-  //   type="text"
-  // />
+// <DebounceInput
+//   minLength={1}
+//   debounceTimeout={1000}
+//   placeholder="Search"
+//   onChange={event => props.callback(event)}
+//   type="text"
+// />

@@ -1,11 +1,11 @@
 // @flow
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
 import ArrowBack from '@material-ui/icons/ArrowBack'
-import Typography from '@material-ui/core/Typography';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import Typography from '@material-ui/core/Typography'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 import './BackButton.scss'
 
@@ -16,28 +16,43 @@ const styles = theme => ({
   btn: {
     ...theme.typography.button,
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   paper: {
     padding: theme.spacing.unit * 2,
     color: theme.palette.text.secondary,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   progress: {
     margin: theme.spacing.unit * 0,
     float: 'right',
     color: '#00695c',
   },
-});
+})
 
-class BackButton extends Component {
+type Classes = {
+  root: Object,
+  btn: Object,
+  paper: Object,
+  progress: Object,
+}
+
+type Props = {
+  classes: Classes,
+}
+
+type State = {
+  showLoading: boolean,
+}
+
+class BackButton extends Component<Props, State> {
   state = {
-    showLoading: false
+    showLoading: false,
   }
   clickHandler = () => {
     this.setState({ showLoading: true })
   }
-  render(){
+  render() {
     const { showLoading } = this.state
     console.log(showLoading)
     const { classes } = this.props
@@ -51,19 +66,15 @@ class BackButton extends Component {
             component="p"
           >
             <ArrowBack />
-            <span style={{ paddingLeft: 5, textDecoration: 'none' }}>
-              Back
-            </span>
+            <span style={{ paddingLeft: 5, textDecoration: 'none' }}>Back</span>
             <span className="icon-loading">
-              {
-                showLoading && (
-                  <CircularProgress 
-                    className={classes.progress}
-                    size={30}
-                    thickness={5}
-                  />
-                )
-              }
+              {showLoading && (
+                <CircularProgress
+                  className={classes.progress}
+                  size={30}
+                  thickness={5}
+                />
+              )}
             </span>
           </Typography>
         </Link>

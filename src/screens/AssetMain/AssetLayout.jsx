@@ -2,14 +2,14 @@
 import React from 'react'
 import Img from 'react-image'
 import ReactAudioPlayer from 'react-audio-player'
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import grey from '@material-ui/core/colors/grey';
+import { withStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
+import grey from '@material-ui/core/colors/grey'
 
 import BackButton from '../../components/BackButton'
 import './AssetLayout.scss'
-import { Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core'
 
 interface Metadata {
   description: string;
@@ -18,10 +18,18 @@ interface Metadata {
   title: string;
 }
 
+type Classes = {
+  root: Object,
+  caption: Object,
+  description: Object,
+  paper: Object,
+}
+
 type Props = {
   nasa_id: string,
   media_type: string,
   metadata: Metadata,
+  classes: Classes,
 }
 
 const styles = theme => ({
@@ -29,33 +37,32 @@ const styles = theme => ({
     flexGrow: 1,
   },
   caption: {
-    margin: '0.5em 0'
+    margin: '0.5em 0',
   },
   description: {
-    color: grey[800] //#424242
+    color: grey[800], //#424242
   },
   paper: {
     padding: theme.spacing.unit * 2,
     color: theme.palette.text.secondary,
   },
-});
+})
 
 function AssetLayout(props: Props) {
   const { classes, media_type, metadata, nasa_id } = props
   const { description, location, photographer, title } = metadata
-  const src = media_type === 'image'
-    ? `https://images-assets.nasa.gov/${media_type}/${nasa_id}/${nasa_id}~medium.jpg`
-    : undefined
+  const src =
+    media_type === 'image'
+      ? `https://images-assets.nasa.gov/${media_type}/${nasa_id}/${nasa_id}~medium.jpg`
+      : undefined
 
   const caption = (photographer, location) => {
     const startText = 'Photo Taken By:'
     if (photographer && location) {
       return `${startText} ${photographer} - at ${location}`
-    }
-    else if (photographer) {
+    } else if (photographer) {
       return `${startText} ${photographer}`
-    }
-    else if (location) {
+    } else if (location) {
       return `${location}`
     }
     return ''
@@ -66,8 +73,7 @@ function AssetLayout(props: Props) {
         <Grid item xs={12}>
           <BackButton />
         </Grid>
-        {
-          media_type === 'image' && 
+        {media_type === 'image' && (
           <Grid item xs={12} lg={4}>
             <article className="img-main__wrapper">
               <div>
@@ -75,18 +81,16 @@ function AssetLayout(props: Props) {
                 <Typography
                   className={`${classes.caption} img-main__caption`}
                   variant="caption"
-                >{caption(photographer, location)}
+                >
+                  {caption(photographer, location)}
                 </Typography>
               </div>
             </article>
           </Grid>
-        }
+        )}
         <Grid item xs={12} lg={7}>
           <article className="img-main__text">
-            <Typography
-              className="img-main__title"
-              variant="title"
-            >
+            <Typography className="img-main__title" variant="title">
               {title}
             </Typography>
             <Typography
@@ -98,19 +102,17 @@ function AssetLayout(props: Props) {
           </article>
         </Grid>
         <Grid xs={12}>
-            {
-              media_type === 'audio' && (
-                <Paper className="audio-player__wrapper" elevation={0}>
-                  <ReactAudioPlayer className="audio-player"
-                    src={`http://images-assets.nasa.gov/audio/${nasa_id}/${nasa_id}~128k.mp3`}
-                    controls
-                  />
-                </Paper>
-              )
-            }
+          {media_type === 'audio' && (
+            <Paper className="audio-player__wrapper" elevation={0}>
+              <ReactAudioPlayer
+                className="audio-player"
+                src={`http://images-assets.nasa.gov/audio/${nasa_id}/${nasa_id}~128k.mp3`}
+                controls
+              />
+            </Paper>
+          )}
         </Grid>
       </Grid>
-
     </div>
   )
 }
