@@ -7,6 +7,8 @@ import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
+import './SearchBar.scss'
+
 const styles = {
   root: {
     padding: '2px 4px',
@@ -34,7 +36,7 @@ type Props = {
 function SearchBar(props: Props) {
   const { classes } = props
   return (
-    <Paper className={classes.root} elevation={1}>
+    <Paper className={`${classes.root} search-bar`} elevation={1}>
       <IconButton className={classes.iconButton} aria-label="Search">
         <SearchIcon />
       </IconButton>
