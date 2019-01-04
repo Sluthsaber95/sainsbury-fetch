@@ -1,0 +1,7 @@
+---
+"*.{js,jsx,json,css}":
+- yarn run farch
+- yarn run prettier:write
+- git add
+"*.{jpeg,jpg,png,svg}":
+- yarn run farch

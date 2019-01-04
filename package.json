@@ -1,17 +1,84 @@
 {
   "name": "sainsbury-fetch",
   "version": "0.1.0",
-  "private": true,
+  "engine": {
+    "node": "10.14.2",
+    "npm": "6.5.0",
+    "yarn": "1.10.1"
+  },
+  "license": "MIT",
+  "private": false,
   "dependencies": {
+    "@material-ui/core": "^3.8.1",
+    "@material-ui/icons": "^3.0.1",
+    "add": "^2.0.6",
+    "axios": "^0.18.0",
+    "node-sass": "^4.11.0",
     "react": "^16.7.0",
+    "react-audio-player": "^0.11.0",
+    "react-debounce-input": "^3.2.0",
     "react-dom": "^16.7.0",
-    "react-scripts": "2.1.1"
+    "react-image": "^1.5.1",
+    "react-lazy-load-image-component": "^1.2.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "react-throttle": "^0.3.0",
+    "yarn": "^1.12.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@storybook/addon-actions": "^4.1.4",
+    "@storybook/addon-links": "^4.1.4",
+    "@storybook/addons": "^4.1.4",
+    "@storybook/react": "^4.1.4",
+    "babel-loader": "^8.0.4",
+    "cypress": "^3.1.4",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "flow-bin": "^0.89.0",
+    "husky": "^1.2.1",
+    "lint-staged": "^8.1.0",
+    "linter-farch": "^1.3.0",
+    "onchange": "^5.2.0",
+    "prettier": "1.15.3",
+    "sinon": "^7.2.2"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "farch": "farch -R",
+    "flow:start": "flow start --flowconfig-name ./config/flowconfig.yml",
+    "flow:status": "flow status --flowconfig-name ./config/flowconfig.yml",
+    "flow:quick-check": "yarn run flow:status && yarn run flow:stop",
+    "flow:stop": "flow stop --flowconfig-name ./config/flowconfig.yml",
+    "lint": "yarn run flow:start & yarn run prettier:watch",
+    "prettier:watch": "onchange '**/*.{js,jsx}' -- prettier --write {{changed}} --config ./config/prettierrc.yaml",
+    "prettier:write": "prettier --write \"src/**/*.{js,jsx}\" --config ./config/prettierrc.yaml",
+    "start": "react-scripts start",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public",
+    "cypress": "cypress run --env configFile=ci --config watchForFileChanges=false",
+    "cypress:dev": "cypress open --env configFile=dev"
+  },
+  "farch": {
+    "src/*.css": "^([a-zA-Z]{0,}).css$",
+    "src/*.sass": "^([A-Z][a-zA-Z]{0,}).sass$",
+    "src/*.jpeg": "^(logo|icon)-\\w{1,}\\.jpeg$",
+    "src/*.jpg": "^(logo|icon)-\\w{1,}\\.jpg$",
+    "src/*.js": "^(([a-z][a-zA-Z]{0,})|([a-zA-Z]{0,}.test)).js$",
+    "src/components/*.jsx": "^[A-Z]{0,}[a-zA-Z]{0,}.jsx$",
+    "src/containers/*.jsx": "^[A-Z][a-zA-Z]{0,}Container.jsx",
+    "src/screens/*.jsx": "^[A-Z][a-zA-Z]{0,}.jsx",
+    "src/*.png": "^(logo|image|icon)-\\w{1,}\\.png$",
+    "src/*.svg": "^(logo|image|icon)-\\w{1,}\\.svg$"
+  },
+  "lint-staged": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "export CI=true && yarn run 'flow:quick-check' && yarn test && lint-staged -c ./config/lintstagedrc.yml",
+      "pre-push": "export CI=true && yarn run cypress && yarn test && yarn run flow:status"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
