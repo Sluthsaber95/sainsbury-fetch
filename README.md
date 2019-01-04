@@ -1,44 +1,118 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Booking Go Assignment v0.1.1
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+What things you need to install the software and how to install them. Use the exact runtimes and package managers below
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```
+- Node: 10.14.2
+- NPM": 6.5.0,
+- Yarn: 1.10.1
+```
 
-### `npm test`
+### Installing
+This project only utlizes `Yarn` and has not been tested for `NPM` - i.e. there is currently no `package-lock.json` file only `yarn.lock`.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+yarn install
+```
 
-### `npm run build`
+### Start up the project
+End with an example of getting some data out of the system or using it for a little demo
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+yarn start
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+You should see this terminal message like so.
+```
+Compiled successfully!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You can now view booking-go-assignment in the browser.
 
-### `npm run eject`
+  Local:            http://localhost:3000/
+  On Your Network:  http://192.168.0.10:3000/
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Running the tests
 
-## Learn More
+## Static Type Testing - Flow
+Unfortunately Flow can't run on watch due to how slow my current machine is. The alternative solution is introduce a simple CML via Yarn
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+yarn run flow:quick-check
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Unit Tests - TDD with Jest & Enzyme
+
+To unit test all components
+```
+yarn test
+```
+
+You should get this message
+```
+No tests found related to files changed since last commionit.
+Press `a` to run all tests, or run Jest with `--watchAlssignment$l`.
+
+Watch Usage
+ › Press a to run all tests.
+ › Press p to filter by a filename regex pattern. › Press t to filter by a test name regex pattern.
+ › Press q to quit watch mode.
+ › Press Enter to trigger a test run.
+```
+
+To unit test a specific component
+```
+yarn test <Component Name>.spec.js
+```
+
+```
+yarn test CardResultValid.spec.js
+```
+
+<br/>
+
+### End-to-end Tests - Cypress (automated UI testing)
+
+#### Prerequisite
+
+- Install the latest version of Chrome Browser
+
+To start, type in the command below to start up the Cypress GUI
+```
+yarn run cypress:dev
+```
+
+The GUI will consist of 3 separate tests, I recommend just running all of them at once they should take under 3 minutes.
+
+Unfortunately not all the tests here have been completed - in this case asset__spec--images, as for some reason on pageload/renders on Cypress doesn't show the asset loading pro
+
+On the other hand the application loads the asset on route /asset/:id fine
+
+<br/>
+
+
+
+## Build Project
+
+```
+yarn run build
+```
+
+
+## Versioning
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
