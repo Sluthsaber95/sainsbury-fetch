@@ -51,7 +51,7 @@ To create a production build, use yarn build.
 
 ## Running the tests
 
-## Static Type Testing - Flow
+### Static Type Testing - Flow
 Unfortunately Flow can't run on watch due to how slow my current machine is. The alternative solution is introduce a simple command via Yarn
 
 ```
@@ -126,7 +126,7 @@ yarn run build
 ```
 
 ## Extras
-For additional notes, visit the /docs section in this project 
+For additional notes, visit the `/docs` section in this project 
 - Improvements to the project - see `/Notes On Project/What can I improve?.md`
 - Technical Test Checklist - see `/Notes On Project/Technical Test Checklist.md`
 - Agile Tickets - see `/Tickets`
