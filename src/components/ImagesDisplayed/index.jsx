@@ -22,23 +22,28 @@ function ImagesDisplayed(props: Props) {
   const { collection } = props
   return (
     <section className="img-display">
-      <Grid container spacing={0}>
+      <Grid container className="img-display__wrapper" spacing={0}>
         {collection.length === 0 ? (
           <ImagesNoResults />
         ) : (
-          collection.map(({ alt, src, key }, i) => {
-            return (
-              <Grid item xs={6} sm={4} lg={3}>
-                <ImageWrapper
-                  src={src}
-                  alt={alt}
+            collection.map(({ alt, src, key }, i) => {
+              return (
+                <Grid
+                  item
+                  xs={6}
+                  sm={4}
+                  lg={3}
                   key={key + `${i}`}
-                  nasa_id={key}
-                />
-              </Grid>
-            )
-          })
-        )}
+                >
+                  <ImageWrapper
+                    src={src}
+                    alt={alt}
+                    nasa_id={key}
+                  />
+                </Grid>
+              )
+            })
+          )}
       </Grid>
     </section>
   )

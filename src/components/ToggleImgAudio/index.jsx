@@ -51,8 +51,8 @@ function ToggleImgAudio(props: Props) {
         value={selectedOption}
         onChange={handleOptionChange}
       >
-        <FormControlLabel value="image" control={<Radio />} label="Images" />
-        <FormControlLabel value="audio" control={<Radio />} label="Audio" />
+        <FormControlLabel value="image" control={<Radio className="radio-img" />} label="Images" />
+        <FormControlLabel value="audio" control={<Radio className="radio-audio" />} label="Audio" />
       </RadioGroup>
     </FormControl>
   )

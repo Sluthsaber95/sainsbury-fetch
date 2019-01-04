@@ -73,7 +73,7 @@ function AssetLayout(props: Props) {
               <div>
                 <Img src={src} className="img-main" alt={location} />
                 <Typography
-                  className={classes.caption}
+                  className={`${classes.caption} img-main__caption`}
                   variant="caption"
                 >{caption(photographer, location)}
                 </Typography>
@@ -89,7 +89,10 @@ function AssetLayout(props: Props) {
             >
               {title}
             </Typography>
-            <Typography className={classes.description} gutterBottom>
+            <Typography
+              className={`${classes.description} img-main__description`}
+              gutterBottom
+            >
               {description}
             </Typography>
           </article>

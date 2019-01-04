@@ -59,6 +59,7 @@ function AudioDisplayed(props: Props) {
                       </ListItemIcon>
                       <Link to={`/asset/${nasa_id}`} key={nasa_id} style={{ 'text-decoration': 'none' }}>
                         <ListItemText
+                          className="audio-list-item"
                           primary={finalDescription}
                           secondary={location}
                         />
