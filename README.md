@@ -1,44 +1,132 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Sainsbury's NASA Technical Test
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+What things you need to install the software and how to install them. Use the exact runtimes and package managers below - other version may yield unexpected results
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```
+Node: 10.14.2
 
-### `npm test`
+NPM: 6.5.0
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Yarn: 1.10.1
+```
 
-### `npm run build`
+### Installing
+This project only utlizes `Yarn` and has not been tested for `NPM` - i.e. there is currently no `package-lock.json` file only `yarn.lock`, thus using NPM may yield unexpected results.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+NPM is shown here so that you can use NPM to install [Yarn](https://yarnpkg.com/en/docs/getting-started), or install Yarn by itself. Please note here that this version of NPM comes by default with 10.14.2 NodeJS
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+```
+yarn install
+```
+### Straight to Live Version
+Built & Hosted on Netlify - https://happy-darwin-774cee.netlify.com/search
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Start up the project
 
-### `npm run eject`
+```
+yarn start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+You should see this terminal message like so.
+```
+Compiled successfully!
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+You can now view booking-go-assignment in the browser.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  Local:            http://localhost:3000/
+  On Your Network:  http://192.168.0.10:3000/
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+```
 
-## Learn More
+<br/>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Running the tests
+
+## Static Type Testing - Flow
+Unfortunately Flow can't run on watch due to how slow my current machine is. The alternative solution is introduce a simple command via Yarn
+
+```
+yarn run flow:quick-check
+```
+
+### Unit Tests - TDD with Jest & Enzyme
+
+To unit test all components
+```
+yarn test
+```
+
+You should get this message
+```
+No tests found related to files changed since last commionit.
+Press `a` to run all tests, or run Jest with `--watchAlssignment$l`.
+
+Watch Usage
+ › Press a to run all tests.
+ › Press p to filter by a filename regex pattern. › Press t to filter by a test name regex pattern.
+ › Press q to quit watch mode.
+ › Press Enter to trigger a test run.
+```
+
+To unit test a specific component
+```
+yarn test <Component Name>.spec.js
+```
+
+```
+yarn test CardResultValid.spec.js
+```
+
+<br/>
+
+### End-to-end Tests - Cypress (automated UI testing)
+
+#### Prerequisite
+
+- Install the latest version of Chrome Browser
+
+Start the project SPA and get it up and running again
+```
+yarn start
+```
+You need the app to run, else Cypress will not be able to test the actually app per se.
+
+Next, type in the command below to start up the Cypress GUI
+```
+yarn run cypress:dev
+```
+
+The GUI will consist of 3 separate tests, I recommend just running all of them at once they should take under 3 minutes.
+
+If you rather just give the all the test a once over, without any watch functionality, command below should do fine
+```
+yarn run cypress
+```
+
+Unfortunately not all the tests here have been completed - in this case asset__spec--image
+
+For some reason on pageload/renders on Cypress doesn't show the asset loading up properly. On the other hand the application loads the asset on route /asset/:id fine - need to shoot the Cypress team on Twitter on whether I'm using the tool correctly or if there is a potential bug in the tooling.
+
+<br/>
+
+
+## Build Project
+
+```
+yarn run build
+```
+
+## Extras
+For additional notes, visit the /docs section in this project 
+- Improvements to the project - see `/Notes On Project/What can I improve?.md`
+- Technical Test Checklist - see `/Notes On Project/Technical Test Checklist.md`
+- Agile Tickets - see `/Tickets`
