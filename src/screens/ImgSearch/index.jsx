@@ -38,7 +38,7 @@ const styles = theme => ({
     padding: theme.spacing.unit * 2,
     textAlign: 'center',
     color: theme.palette.text.secondary,
-  },
+  }
 });
 
 class ImgSearch extends Component<Props, State> {
@@ -91,23 +91,21 @@ class ImgSearch extends Component<Props, State> {
     return (
       <section className={classes.root}>
         <Grid container spacing={24}>
-          <Grid item xs={12}>
+          <Grid item xs={12} lg={10}>
             <SearchBar callback={this.handleInputChange} />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} lg>
             <ToggleImgAudio
               handleOptionChange={this.handleOptionChange}
               selectedOption={selectedOption}
             />
           </Grid>
-        {/* <article className="search-bar-wrapper">
-        </article> */}
-            {selectedOption === 'image' ? (
-              <ImagesDisplayed collection={dataImg} />
-              ) : (
+          {selectedOption === 'image' ? (
+            <ImagesDisplayed collection={dataImg} />
+          ) : (
               <AudioDisplayed collection={dataAudio} />
-              )
-            }
+            )
+          }
         </Grid>
       </section>
     )

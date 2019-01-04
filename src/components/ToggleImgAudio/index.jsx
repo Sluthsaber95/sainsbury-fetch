@@ -7,9 +7,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import grey from '@material-ui/core/colors/grey'
 
+import './ToggleImgAudio.scss'
+
 const styles = theme => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   },
   formControl: {
     margin: theme.spacing.unit * 3,
@@ -41,8 +43,7 @@ const DecorLine = () => {
 function ToggleImgAudio(props: Props) {
   const { classes, handleOptionChange, selectedOption } = props
   return (
-    <FormControl className={classes.root}>
-      <DecorLine />
+    <FormControl className={`${classes.root} toggle-ia__wrapper`}>
       <RadioGroup 
         aria-label="image or audio selection"
         name="imageAudio"

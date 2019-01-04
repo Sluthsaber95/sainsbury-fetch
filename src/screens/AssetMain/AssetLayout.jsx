@@ -2,7 +2,6 @@
 import React from 'react'
 import Img from 'react-image'
 import ReactAudioPlayer from 'react-audio-player'
-import axios from 'axios'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -32,9 +31,6 @@ const styles = theme => ({
   caption: {
     margin: '0.5em 0'
   },
-  title: {
-    margin: '0.8em 0'
-  },
   description: {
     color: grey[800] //#424242
   },
@@ -51,67 +47,64 @@ function AssetLayout(props: Props) {
     ? `https://images-assets.nasa.gov/${media_type}/${nasa_id}/${nasa_id}~medium.jpg`
     : undefined
 
-  let brokenLinkPresent = false
-  try {
-    axios.get(`http://images-assets.nasa.gov/audio/${nasa_id}/${nasa_id}~128k.mp3`)
-  } catch (e) {
-    brokenLinkPresent = true
-  }
-
   const caption = (photographer, location) => {
     const startText = 'Photo Taken By:'
-    if(photographer && location) {
+    if (photographer && location) {
       return `${startText} ${photographer} - at ${location}`
     }
-    else if(photographer) {
+    else if (photographer) {
       return `${startText} ${photographer}`
     }
-    else if(location) {
+    else if (location) {
       return `${location}`
     }
     return ''
   }
-  // photographer && (`Photo Taken By: ${photographer} - at ${location && `at ${location}`}` )
   return (
     <div className={classes.root}>
       <Grid container spacing={24}>
         <Grid item xs={12}>
           <BackButton />
         </Grid>
-        <Grid item xs={12}>
-          <article className="img-main__wrapper">
-            <Img src={src} className="img-main" alt={location} />
-            <Typography
-              className={classes.caption}
-              variant="caption"
-            >{caption(photographer, location)}
-            </Typography>
-          </article>
-        </Grid>
-        <Grid item xs={12} sm={6}>
+        {
+          media_type === 'image' && 
+          <Grid item xs={12} lg={4}>
+            <article className="img-main__wrapper">
+              <div>
+                <Img src={src} className="img-main" alt={location} />
+                <Typography
+                  className={classes.caption}
+                  variant="caption"
+                >{caption(photographer, location)}
+                </Typography>
+              </div>
+            </article>
+          </Grid>
+        }
+        <Grid item xs={12} lg={7}>
           <article className="img-main__text">
             <Typography
-              className={classes.title}
+              className="img-main__title"
               variant="title"
             >
               {title}
             </Typography>
-            <Typography className={classes.description}gutterBottom>
+            <Typography className={classes.description} gutterBottom>
               {description}
             </Typography>
           </article>
         </Grid>
         <Grid xs={12}>
-          <Paper className="audio-player__wrapper" elevation={0}>
             {
-              !brokenLinkPresent && (
-                <ReactAudioPlayer className="audio-player"
-                  src={`http://images-assets.nasa.gov/audio/${nasa_id}/${nasa_id}~128k.mp3`}
-                  controls
-                />
+              media_type === 'audio' && (
+                <Paper className="audio-player__wrapper" elevation={0}>
+                  <ReactAudioPlayer className="audio-player"
+                    src={`http://images-assets.nasa.gov/audio/${nasa_id}/${nasa_id}~128k.mp3`}
+                    controls
+                  />
+                </Paper>
               )
             }
-          </Paper>
         </Grid>
       </Grid>
 

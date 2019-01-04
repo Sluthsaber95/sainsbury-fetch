@@ -6,13 +6,12 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-// import { DebounceInput } from 'react-debounce-input'
 
 const styles = {
   root: {
     padding: '2px 4px',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   input: {
     marginLeft: 8,
@@ -25,7 +24,7 @@ const styles = {
     width: 1,
     height: 28,
     margin: 4,
-  },
+  }
 };
 
 type Props = {
