@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import SearchBar from './index'
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import '../../../config/enzyme-test-setup'
 
 it('renders without crashing', () => {
@@ -10,6 +10,7 @@ it('renders without crashing', () => {
 
 const placeholder = 'Search'
 it(`contains correct placeholder to "${placeholder}"`, () => {
-  const shallowWrapper = shallow(<SearchBar />)
-  expect(shallowWrapper.props().placeholder).toBe(placeholder)
+  const wrapper = mount(<SearchBar />)
+  expect(wrapper.find('input').length).toBe(1)
+  expect(wrapper.find('input').props().placeholder).toBe(placeholder)
 })

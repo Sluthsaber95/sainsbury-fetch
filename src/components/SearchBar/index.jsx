@@ -50,7 +50,8 @@ function SearchBar(props: Props) {
       </IconButton>
       <Debounce time="300" handler="onChange">
         <InputBase
-          className={`${classes.input} search-bar`}
+          id="search-bar"
+          className={`${classes.input} search-bar`} 
           onChange={event => props.callback(event)}
           placeholder="Search"
         />
@@ -60,11 +61,3 @@ function SearchBar(props: Props) {
 }
 
 export default withStyles(styles)(SearchBar)
-//   className="search-bar"
-// <DebounceInput
-//   minLength={1}
-//   debounceTimeout={1000}
-//   placeholder="Search"
-//   onChange={event => props.callback(event)}
-//   type="text"
-// />

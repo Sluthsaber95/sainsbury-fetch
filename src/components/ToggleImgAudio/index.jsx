@@ -5,7 +5,6 @@ import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
-import grey from '@material-ui/core/colors/grey'
 
 import './ToggleImgAudio.scss'
 
@@ -29,22 +28,9 @@ type Classes = {
 }
 
 type Props = {
-  classes: Object,
+  classes: Classes,
   handleOptionChange: Function,
   selectedOption: string,
-}
-
-const DecorLine = () => {
-  const styleDecorLine = {
-    width: '95%',
-    height: 1,
-    background: grey[300],
-  }
-  return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <div style={styleDecorLine} />
-    </div>
-  )
 }
 
 function ToggleImgAudio(props: Props) {
