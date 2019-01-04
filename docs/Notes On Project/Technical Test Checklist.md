@@ -43,3 +43,5 @@ The below are the Technical specifications requires for this test to be complete
   * [x] Pagination
   * [x] Audio Playback
   * [x] Search Debouncing
+* [x] Miscellaneous
+    * [x] Commit Titles and Message mainly follows the [AngularJS commit message Guidelines](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits)
