@@ -52,7 +52,7 @@ To create a production build, use yarn build.
 ## Running the tests
 
 ## Static Type Testing - Flow
-Unfortunately Flow can't run on watch due to how slow my current machine is. The alternative solution is introduce a simple CML via Yarn
+Unfortunately Flow can't run on watch due to how slow my current machine is. The alternative solution is introduce a simple command via Yarn
 
 ```
 yarn run flow:quick-check
@@ -94,12 +94,23 @@ yarn test CardResultValid.spec.js
 
 - Install the latest version of Chrome Browser
 
-To start, type in the command below to start up the Cypress GUI
+Start the project SPA and get it up and running again
+```
+yarn start
+```
+You need the app to run, else Cypress will not be able to test the actually app per se.
+
+Next, type in the command below to start up the Cypress GUI
 ```
 yarn run cypress:dev
 ```
 
 The GUI will consist of 3 separate tests, I recommend just running all of them at once they should take under 3 minutes.
+
+If you rather just give the all the test a once over, without any watch functionality, command below should do fine
+```
+yarn run cypress
+```
 
 Unfortunately not all the tests here have been completed - in this case asset__spec--image
 
